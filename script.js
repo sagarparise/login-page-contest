@@ -36,23 +36,19 @@ if(username&& email && password && confirmpassword)
   }
   else
   {
-    msg.innerHTML = "Error: password doesn't match !"
-    setTimeout(function(){
-        msg.innerHTML = ""
-    
-       }, 2000);
+    displayMsg("Password doen't match");
+    return;
   }
  
 }
 else
 {
-    msg.innerHTML = "Error: All fields are necesary"
-   setTimeout(function(){
-    msg.innerHTML = ""
-
-   }, 2000);
+ 
+    displayMsg("Error: All fields are necesary");
+    return;
 
 }
+
 
 }
 
@@ -66,6 +62,7 @@ function renderLoginPage(){
     let login = document.createElement("div");
     login.className = "login-page";
     login.innerHTML = `
+    <h3 id="success-msg">Signup Successfully</h3>
     <h2>Profile</h2>
     <i class='bx bx-user' id ="user-icon"></i>
     <p>Full Name : ${username}</p>
@@ -90,4 +87,12 @@ function renderLoginPage(){
 });
    
     
+}
+function displayMsg(msgText)
+{
+  msg.innerHTML = msgText;
+  setTimeout(function(){
+   msg.innerHTML = ""
+
+  }, 2000);
 }
